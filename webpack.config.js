@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-03 17:57:24
- * @LastEditTime: 2021-11-11 14:54:32
+ * @LastEditTime: 2021-11-12 18:12:34
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \webpack\webpack5\webpack.config.js
@@ -37,6 +37,17 @@ module.exports = {
         'css-loader',
         'sass-loader'
       ]
+    }, {
+      test: /.(png|jpg|gif|jpeg)$/,
+      use: ['file-loader']
+    }, {
+      test: /\.(woff|woff2|eot|ttf|otf)$/,
+      use: [{
+        loader: 'url-loader',
+        options: {
+          limit: 10240
+        }
+      }]
     }]
   },
   mode: 'production',
