@@ -33,25 +33,17 @@ module.exports = {
       },
       {
         test: /.(png|jpg|gif|jpeg)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name][hash:8].[ext]'
-            }
-          }
-        ]
+        type: 'asset/resource',
+        generator: {
+          filename: '[name][hash:8].[ext]'
+        }
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name][hash:8].[ext]'
-            }
-          }
-        ]
+        type: 'asset/resource',
+        generator: {
+          filename: '[name][hash:8].[ext]'
+        }
       }
     ]
   },
