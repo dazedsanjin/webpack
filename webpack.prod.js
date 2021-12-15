@@ -4,11 +4,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
+
 module.exports = {
   entry: './src/main.js',
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name][chunkhash:8].js'
+    filename: '[name][chunkhash:8].js',
+    clean: true
   },
   module: {
     rules: [
