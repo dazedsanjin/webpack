@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
-
 module.exports = {
   entry: './src/main.js',
   output: {
@@ -31,7 +30,29 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  'autoprefixer',
+                  [
+                    'postcss-px-to-viewport',
+                    {
+                      viewportWidth: 1920,
+                      unitPrecision: 5,
+                      minPixelValue: 1
+                    }
+                  ]
+                ]
+              }
+            }
+          }
+        ]
       },
       {
         test: /.(png|jpg|gif|jpeg)$/,

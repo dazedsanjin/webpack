@@ -5,4 +5,9 @@
 .message {
   color: red;
   font-family: 'Manrope-SemiBold';
+  font-size: 10px;
+}
+.image {
+  background-image: url('../src/images/image.png');
+  transform: rotate(360deg);
 }
