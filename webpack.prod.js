@@ -3,6 +3,7 @@ const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const HTMLInlineCSSWebpackPlugin = require('html-inline-css-webpack-plugin').default
 
 module.exports = {
   entry: './src/main.js',
@@ -80,7 +81,8 @@ module.exports = {
       template: './src/index.html',
       inject: true,
       filename: 'index.html'
-    })
+    }),
+    new HTMLInlineCSSWebpackPlugin()
   ],
   optimization: {
     minimizer: [new CssMinimizerPlugin()]
