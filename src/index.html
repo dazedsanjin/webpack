@@ -2,9 +2,10 @@
 <html lang="en">
   <head>
     <%= require('raw-loader!./meta.html') %>
-    <script>
+    <script defer="defer">
       <%= require('raw-loader!babel-loader!../node_modules/lib-flexible/flexible.js') %>
     </script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
   </head>
   <body>
     <div id="app"></div>
