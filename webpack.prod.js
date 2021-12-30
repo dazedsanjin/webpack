@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const HTMLInlineCSSWebpackPlugin = require('html-inline-css-webpack-plugin').default
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 module.exports = {
   entry: './src/main.js',
@@ -82,7 +83,8 @@ module.exports = {
       inject: true,
       filename: 'index.html'
     }),
-    new HTMLInlineCSSWebpackPlugin()
+    new HTMLInlineCSSWebpackPlugin(),
+    new FriendlyErrorsWebpackPlugin()
   ],
   optimization: {
     minimizer: [new CssMinimizerPlugin()]
@@ -104,8 +106,9 @@ module.exports = {
     //     }
     //   }
     // }
-  }
+  },
   externals: {
     vue: 'Vue'
-  }
+  },
+  stats: 'errors-only'
 }
