@@ -8,6 +8,8 @@
   font-size: 10px;
 }
 .image {
-  background-image: url('../src/images/image.png');
+  width: 100px;
+  height: 100px;
+  background: url('../src/images/image.png') 100% 100%;
   transform: rotate(360deg);
 }
