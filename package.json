@@ -33,7 +33,6 @@
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-inline-css-webpack-plugin": "^1.11.1",
     "html-webpack-plugin": "^5.5.0",
-    "lint-staged": "^12.1.4",
     "mini-css-extract-plugin": "^2.4.4",
     "postcss": "^8.3.11",
     "postcss-loader": "^6.2.1",
@@ -51,19 +50,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "husky": "^4.3.8",
     "lib-flexible": "^0.3.2",
     "vue": "^2.6.14"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "echo 'git commit trigger husky pre-commit hook'"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.{js,vue}": [
-      "eslint --fix",
-      "git add"
-    ]
   }
 }
