@@ -1,10 +1,11 @@
 const webpackMerge = require('webpack-merge')
 const commonConfiguration = require('./webpack.common.js')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin')
 
 const productionConfiguration = {
   mode: 'production',
-  plugins: [],
+  plugins: [new SpeedMeasureWebpackPlugin()],
   optimization: {
     minimizer: [new CssMinimizerPlugin()]
     // splitChunks: {
