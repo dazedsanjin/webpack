@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-13 20:53:02
- * @LastEditTime: 2022-01-02 17:39:55
+ * @LastEditTime: 2022-01-04 15:51:12
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%
  * @FilePath: \webpack\webpack5\webpack.prod.js
@@ -11,12 +11,20 @@ const commonConfiguration = require('./webpack.common.js')
 const TerserPlugin = require('terser-webpack-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin')
-const BundleAnalyzerPlugin =
-  require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
+const webpack = require('webpack')
 
 const productionConfiguration = {
   mode: 'production',
-  plugins: [new SpeedMeasureWebpackPlugin(), new BundleAnalyzerPlugin()],
+  plugins: [
+    new SpeedMeasureWebpackPlugin(),
+    new BundleAnalyzerPlugin(),
+    new HardSourceWebpackPlugin(),
+    new webpack.DllReferencePlugin({
+      manifest: require('./dist/dll/library.json')
+    })
+  ],
   optimization: {
     minimizer: [
       new TerserPlugin({
@@ -42,12 +50,9 @@ const productionConfiguration = {
     //     }
     //   }
     // }
-  },
-  externals: {
-    vue: 'Vue'
   }
+  // externals: {
+  //   vue: 'Vue'
+  // }
 }
-module.exports = webpackMerge.merge(
-  commonConfiguration,
-  productionConfiguration
-)
+module.exports = webpackMerge.merge(commonConfiguration, productionConfiguration)
